@@ -1,0 +1,159 @@
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+
+/* Global styles */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans TC', Arial, sans-serif;
+  color: #111827;
+  background: #f5f7fb;
+}
+
+a {
+  color: inherit;
+}
+
+:root {
+  --echeck-border: #e5e7eb;
+  --echeck-muted: #6b7280;
+  --echeck-surface: #ffffff;
+  --echeck-surface-2: #f9fafb;
+  --echeck-primary: #1d4ed8;
+  --echeck-primary-600: #1e40af;
+  --echeck-danger: #b91c1c;
+  --echeck-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --echeck-radius: 12px;
+}
+
+/* Minimal styling for PrimeNG in unstyled mode */
+.p-dialog-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1200;
+}
+
+.p-dialog {
+  width: min(900px, 100%);
+  max-height: min(90dvh, 900px);
+  background: var(--echeck-surface);
+  border: 1px solid var(--echeck-border);
+  border-radius: var(--echeck-radius);
+  box-shadow: var(--echeck-shadow);
+  overflow: hidden;
+}
+
+.p-dialog-header,
+.p-dialog-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: var(--echeck-surface-2);
+  border-bottom: 1px solid var(--echeck-border);
+}
+
+.p-dialog-footer {
+  border-bottom: 0;
+  border-top: 1px solid var(--echeck-border);
+  justify-content: flex-end;
+}
+
+.p-dialog-title {
+  font-weight: 700;
+}
+
+.p-dialog-content {
+  padding: 1rem;
+  overflow: auto;
+}
+
+.p-dialog-header-actions {
+  margin-left: auto;
+}
+
+.p-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  font-weight: 650;
+  cursor: pointer;
+  user-select: none;
+  background: var(--echeck-surface);
+}
+
+.p-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.echeck-btn-primary.p-button {
+  background: var(--echeck-primary);
+  color: #fff;
+}
+
+.echeck-btn-primary.p-button:hover {
+  background: var(--echeck-primary-600);
+}
+
+.echeck-btn-outline.p-button {
+  border-color: var(--echeck-border);
+  background: transparent;
+}
+
+.echeck-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.echeck-label {
+  font-size: 0.875rem;
+  color: var(--echeck-muted);
+}
+
+.echeck-input,
+select.echeck-input,
+textarea.echeck-input {
+  width: 100%;
+  border: 1px solid var(--echeck-border);
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+  background: var(--echeck-surface);
+  font: inherit;
+}
+
+.echeck-input:focus {
+  outline: none;
+  border-color: rgba(29, 78, 216, 0.55);
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+}
+
+.echeck-card {
+  background: var(--echeck-surface);
+  border: 1px solid var(--echeck-border);
+  border-radius: var(--echeck-radius);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+.echeck-card__header {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--echeck-border);
+  font-weight: 700;
+}
+
+.echeck-card__body {
+  padding: 1rem;
+}

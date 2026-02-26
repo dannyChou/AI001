@@ -1,0 +1,55 @@
+<section class="page">
+  @if (!result()) {
+    <div class="echeck-card">
+      <div class="echeck-card__header">缺少交易結果</div>
+      <div class="echeck-card__body">
+        <p class="muted">請完成簽發與安控驗證後再進入本頁。</p>
+        <div class="actions">
+          <p-button label="回到主頁" styleClass="echeck-btn-primary" [routerLink]="['/menu']" />
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="result echeck-card">
+      <div class="echeck-card__header">簽發完成 - 交易成功</div>
+      <div class="echeck-card__body">
+        <div class="rows">
+          <div class="row">
+            <div class="label">系統交易序號</div>
+            <div class="value">{{ result()!.seqNo }}</div>
+          </div>
+          <div class="row">
+            <div class="label">支票號碼</div>
+            <div class="value">{{ result()!.checkNo }}</div>
+          </div>
+          <div class="row">
+            <div class="label">受款人</div>
+            <div class="value">{{ result()!.payeeName }}</div>
+          </div>
+          <div class="row">
+            <div class="label">金額</div>
+            <div class="value">{{ amountText() }}</div>
+          </div>
+          <div class="row">
+            <div class="label">簽發時間</div>
+            <div class="value">{{ result()!.issuedAt }}</div>
+          </div>
+        </div>
+
+        <div class="notice">
+          <div class="notice__icon">[!]</div>
+          <div class="notice__text">
+            提醒：本票據已自動辦理「存入託收」，系統已發送電子通知予執票人。
+          </div>
+        </div>
+
+        <div class="actions">
+          <p-button label="回到主頁" styleClass="echeck-btn-outline" (onClick)="backHome()" />
+          <p-button label="下載簽發憑證" styleClass="echeck-btn-primary" (onClick)="downloadCertificate()" />
+          <p-button label="列印結果" styleClass="echeck-btn-outline" (onClick)="print()" />
+        </div>
+      </div>
+    </div>
+  }
+</section>
+

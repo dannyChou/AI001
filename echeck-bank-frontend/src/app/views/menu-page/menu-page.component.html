@@ -1,0 +1,31 @@
+<section class="page">
+  <div class="page__heading">
+    <h1 class="page__title">電子支票功能</h1>
+    <p class="page__desc">請從下方功能進入操作流程。</p>
+  </div>
+
+  <div class="grid">
+    @for (card of featureCards; track card.title) {
+      <div class="card echeck-card">
+        <div class="echeck-card__header">{{ card.title }}</div>
+        <div class="echeck-card__body">
+          <div class="card__desc">{{ card.description }}</div>
+
+          <div class="card__actions">
+            @if (card.route && !card.disabled) {
+              <p-button
+                label="進入"
+                icon="pi pi-arrow-right"
+                styleClass="echeck-btn-primary"
+                [routerLink]="card.route"
+              />
+            } @else {
+              <p-button label="尚未開放" styleClass="echeck-btn-outline" [disabled]="true" />
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+

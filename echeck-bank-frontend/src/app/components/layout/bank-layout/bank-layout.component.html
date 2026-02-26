@@ -1,0 +1,48 @@
+<div class="shell">
+  <header class="shell__header">
+    <div class="brand" [routerLink]="['/menu']" routerLinkActive="is-active">
+      <div class="brand__logo" aria-hidden="true">B</div>
+      <div class="brand__text">
+        <div class="brand__name">網際網路銀行 - 電子支票服務</div>
+        <div class="brand__subtitle">{{ pageTitle() }}</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell__body">
+    <aside class="sidebar" aria-label="功能選單">
+      <div class="sidebar__title">功能選單</div>
+
+      @for (group of navGroups; track group.title) {
+        <div class="nav-group">
+          <div class="nav-group__title">{{ group.title }}</div>
+          <div class="nav-group__items">
+            @for (item of group.items; track item.label) {
+              @if (item.route && !item.disabled) {
+                <a
+                  class="nav-item"
+                  [routerLink]="item.route"
+                  routerLinkActive="is-active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
+                  <span class="nav-item__bullet" aria-hidden="true">›</span>
+                  <span>{{ item.label }}</span>
+                </a>
+              } @else {
+                <div class="nav-item is-disabled" [attr.aria-disabled]="true">
+                  <span class="nav-item__bullet" aria-hidden="true">›</span>
+                  <span>{{ item.label }}</span>
+                </div>
+              }
+            }
+          </div>
+        </div>
+      }
+    </aside>
+
+    <main class="content" aria-label="內容區">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+

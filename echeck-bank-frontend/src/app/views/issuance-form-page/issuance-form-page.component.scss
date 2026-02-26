@@ -1,0 +1,147 @@
+.page__heading {
+  margin-bottom: 1rem;
+}
+
+.page__title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.page__desc {
+  margin: 0.4rem 0 0;
+  color: var(--echeck-muted);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.fields {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.is-readonly {
+  background: var(--echeck-surface-2);
+  color: #111827;
+}
+
+.error {
+  color: var(--echeck-danger);
+  font-size: 0.875rem;
+}
+
+.radio-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.radio {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.verify-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.verified__value {
+  margin-top: 0.25rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px dashed var(--echeck-border);
+  border-radius: 10px;
+  background: var(--echeck-surface-2);
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.preview {
+  border: 1px solid var(--echeck-border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.preview__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  background: var(--echeck-surface-2);
+  border-bottom: 1px solid var(--echeck-border);
+}
+
+.preview__title {
+  font-weight: 900;
+  letter-spacing: 0.25rem;
+}
+
+.preview__no {
+  font-weight: 700;
+}
+
+.preview__body {
+  padding: 1rem;
+  background: #fff;
+  display: grid;
+  gap: 1rem;
+}
+
+.preview__row {
+  display: grid;
+  grid-template-columns: 120px 1fr 160px;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.preview__amount {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+  font-weight: 700;
+}
+
+.preview__label {
+  color: var(--echeck-muted);
+}
+
+.preview__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--echeck-border);
+}
+
+.preview__seal {
+  display: grid;
+  gap: 0.35rem;
+  text-align: right;
+}
+
+.preview__seal-box {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--echeck-border);
+  border-radius: 10px;
+  background: var(--echeck-surface-2);
+  font-weight: 800;
+}
+
+@media (max-width: 1100px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+

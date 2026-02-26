@@ -1,0 +1,97 @@
+<section class="page">
+  <div class="page__heading">
+    <h1 class="page__title">安全機制驗證</h1>
+    <p class="page__desc">請選擇驗證方式並輸入認證資訊。</p>
+  </div>
+
+  @if (!issuanceDraft()) {
+    <div class="echeck-card">
+      <div class="echeck-card__header">缺少簽發資料</div>
+      <div class="echeck-card__body">
+        <p class="muted">請先從「支票簽發」填寫資料並預覽確認後再進入本頁。</p>
+        <div class="actions">
+          <p-button label="回到簽發" styleClass="echeck-btn-primary" [routerLink]="['/echeck/issuance']" />
+          <p-button label="回到主頁" styleClass="echeck-btn-outline" [routerLink]="['/menu']" />
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="echeck-card">
+      <div class="echeck-card__header">安全機制驗證</div>
+      <div class="echeck-card__body">
+        <form class="form" [formGroup]="form">
+          <div class="section">
+            <div class="section__title">1. 選擇驗證方式</div>
+            <div class="radio-list">
+              <label class="radio">
+                <input type="radio" value="hardwareCert" formControlName="method" />
+                FXML 憑證（硬體載具）
+              </label>
+              <label class="radio">
+                <input type="radio" value="softwareCertOtp" formControlName="method" />
+                FXML / C3 軟體憑證 + 簡訊 OTP
+              </label>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section__title">2. 輸入認證資訊</div>
+
+            <div class="grid">
+              <div class="echeck-field">
+                <label class="echeck-label" for="certPassword">憑證密碼</label>
+                <input
+                  id="certPassword"
+                  type="password"
+                  class="echeck-input"
+                  formControlName="certPassword"
+                  autocomplete="current-password"
+                />
+                @if (form.controls.certPassword.touched && form.controls.certPassword.invalid) {
+                  <div class="error">請輸入憑證密碼（至少 6 碼）</div>
+                }
+              </div>
+
+              <div class="echeck-field">
+                <label class="echeck-label" for="otp">簡訊 OTP</label>
+                <div class="otp-row">
+                  <input
+                    id="otp"
+                    class="echeck-input"
+                    formControlName="otp"
+                    [disabled]="!otpRequired()"
+                    inputmode="numeric"
+                    autocomplete="one-time-code"
+                    placeholder="請輸入"
+                  />
+                  <p-button
+                    label="取得驗證碼"
+                    styleClass="echeck-btn-outline"
+                    [disabled]="!otpRequired() || otpCooldownSeconds() > 0"
+                    (onClick)="requestOtp()"
+                  />
+                </div>
+                @if (otpRequired() && otpCooldownSeconds() > 0) {
+                  <div class="muted">可再次取得：{{ otpCooldownSeconds() }} 秒</div>
+                }
+                @if (lastOtpHint()) {
+                  <div class="hint">{{ lastOtpHint() }}</div>
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <p-button
+              label="執行 PKCS#7 數位簽章"
+              icon="pi pi-lock"
+              styleClass="echeck-btn-primary"
+              (onClick)="executeSignature()"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+</section>
+

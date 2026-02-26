@@ -1,0 +1,223 @@
+<section class="page">
+  <div class="page__heading">
+    <h1 class="page__title">電子支票簽發申請</h1>
+    <p class="page__desc">請填寫簽發資料並先核對戶名，再預覽樣張確認送出。</p>
+  </div>
+
+  <form class="columns" [formGroup]="form">
+    <div class="col echeck-card">
+      <div class="echeck-card__header">1. 發票人資訊</div>
+      <div class="echeck-card__body fields">
+        <div class="echeck-field">
+          <div class="echeck-label">統編</div>
+          <div class="echeck-input is-readonly" aria-readonly="true">{{ issuerTaxId }}</div>
+        </div>
+
+        <div class="echeck-field">
+          <div class="echeck-label">名稱</div>
+          <div class="echeck-input is-readonly" aria-readonly="true">{{ issuerName }}</div>
+        </div>
+
+        <div class="echeck-field">
+          <label class="echeck-label" for="issuerAccount">帳號</label>
+          <select id="issuerAccount" class="echeck-input" formControlName="issuerAccount">
+            @for (acc of issuerAccounts; track acc) {
+              <option [value]="acc">{{ acc }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="echeck-field">
+          <div class="echeck-label">付款地</div>
+          <div class="echeck-input is-readonly" aria-readonly="true">{{ paymentPlace }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col echeck-card">
+      <div class="echeck-card__header">2. 電子支票資訊</div>
+      <div class="echeck-card__body fields">
+        <div class="echeck-field">
+          <div class="echeck-label">票據號碼</div>
+          <div class="echeck-input is-readonly" aria-readonly="true">{{ checkNo }}</div>
+        </div>
+
+        <div class="echeck-field">
+          <label class="echeck-label" for="amount">金額（整數）</label>
+          <input
+            id="amount"
+            class="echeck-input"
+            formControlName="amount"
+            inputmode="numeric"
+            autocomplete="off"
+            placeholder="請輸入整數"
+          />
+          @if (form.controls.amount.touched && form.controls.amount.invalid) {
+            <div class="error">請輸入金額整數</div>
+          }
+        </div>
+
+        <div class="echeck-field">
+          <label class="echeck-label" for="issueDate">發票日</label>
+          <input id="issueDate" type="date" class="echeck-input" formControlName="issueDate" />
+        </div>
+
+        <div class="echeck-field">
+          <label class="echeck-label">
+            <input type="checkbox" formControlName="negotiable" />
+            背書轉讓（可轉讓）
+          </label>
+        </div>
+
+        <div class="echeck-field">
+          <label class="echeck-label" for="remark">附言</label>
+          <textarea
+            id="remark"
+            class="echeck-input"
+            rows="3"
+            formControlName="remark"
+            placeholder="如押標金..."
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="col echeck-card">
+      <div class="echeck-card__header">3. 執票人（受款人）資訊</div>
+      <div class="echeck-card__body fields">
+        <div class="echeck-field">
+          <div class="echeck-label">對象</div>
+          <div class="radio-row">
+            <label class="radio">
+              <input type="radio" value="corp" formControlName="payeeType" />
+              企業
+            </label>
+            <label class="radio">
+              <input type="radio" value="person" formControlName="payeeType" />
+              個人
+            </label>
+          </div>
+        </div>
+
+        <div class="echeck-field">
+          <label class="echeck-label" for="payeeBank">銀行</label>
+          <select id="payeeBank" class="echeck-input" formControlName="payeeBank">
+            @for (b of bankOptions; track b) {
+              <option [value]="b">{{ b }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="echeck-field">
+          <label class="echeck-label" for="payeeAccount">帳號（16碼）</label>
+          <input
+            id="payeeAccount"
+            class="echeck-input"
+            formControlName="payeeAccount"
+            inputmode="numeric"
+            autocomplete="off"
+            placeholder="請輸入16碼"
+            maxlength="16"
+          />
+          @if (form.controls.payeeAccount.touched && form.controls.payeeAccount.invalid) {
+            <div class="error">帳號需為 16 碼數字</div>
+          }
+        </div>
+
+        <div class="echeck-field">
+          <label class="echeck-label" for="identityType">身分代碼</label>
+          <select id="identityType" class="echeck-input" formControlName="identityType">
+            <option value="taxId">統編</option>
+            <option value="mobile">手機</option>
+            <option value="accountName">戶名</option>
+            <option value="ssnLast4">SSN 後 4 碼</option>
+          </select>
+        </div>
+
+        <div class="echeck-field">
+          <label class="echeck-label" for="identityValue">身分資訊</label>
+          <input
+            id="identityValue"
+            class="echeck-input"
+            formControlName="identityValue"
+            autocomplete="off"
+            placeholder="請輸入身分資訊"
+          />
+        </div>
+
+        <div class="verify-row">
+          <p-button
+            label="按此核對戶名"
+            icon="pi pi-check"
+            styleClass="echeck-btn-outline"
+            (onClick)="verifyPayeeName()"
+          />
+        </div>
+
+        <div class="verified">
+          <div class="echeck-label">戶名顯示</div>
+          <div class="verified__value">
+            @if (verifiedPayeeName()) {
+              {{ verifiedPayeeName() }}
+            } @else {
+              尚未核對
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="actions">
+    <p-button label="預覽支票樣張" icon="pi pi-eye" styleClass="echeck-btn-primary" (onClick)="openPreview()" />
+    <p-button label="重填" icon="pi pi-refresh" styleClass="echeck-btn-outline" (onClick)="reset()" />
+  </div>
+
+  <p-dialog
+    [visible]="previewVisible()"
+    (visibleChange)="previewVisible.set($event)"
+    [modal]="true"
+    [closable]="true"
+    header="電子支票預覽"
+  >
+    <div class="preview">
+      <div class="preview__header">
+        <div class="preview__title">電 子 支 票 預 覽</div>
+        <div class="preview__no">支票號碼：{{ checkNo }}</div>
+      </div>
+
+      <div class="preview__body">
+        <div class="preview__row">
+          <div class="preview__label">憑票交付</div>
+          <div class="preview__value">{{ verifiedPayeeName() ?? '（請先核對戶名）' }}</div>
+          <div class="preview__date">{{ issueDateYmd() }}</div>
+        </div>
+
+        <div class="preview__amount">
+          <div class="preview__label">新臺幣</div>
+          <div class="preview__value">{{ amountTwdText() }}</div>
+        </div>
+
+        <div class="preview__footer">
+          <div class="preview__bank">付款行：{{ form.controls.payeeBank.value }}</div>
+          <div class="preview__seal">
+            <div class="preview__seal-label">發票人簽章</div>
+            <div class="preview__seal-box">{{ issuerName }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <p-button
+        label="確認簽發"
+        icon="pi pi-check"
+        styleClass="echeck-btn-primary"
+        [disabled]="!verifiedPayeeName()"
+        (onClick)="confirmIssuance()"
+      />
+      <p-button label="取消" styleClass="echeck-btn-outline" (onClick)="previewVisible.set(false)" />
+    </ng-template>
+  </p-dialog>
+</section>
+
