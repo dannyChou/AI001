@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --paper:#F7F3EA;
+    --bg:#E9E4DA;
+    --ink:#3E3A33;
+    --ink-soft:#7A756B;
+    --sage:#8FA382;
+    --wheat:#E3C282;
+    --barn:#9A6B52;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    width:900px;
+    background:radial-gradient(1200px 900px at 30% 20%, #F0EBE1 0%, var(--bg) 70%);
+    font-family:"Noto Serif CJK TC","Noto Serif TC",serif;
+    color:var(--ink);
+    display:flex;justify-content:center;
+    padding:60px 0;
+  }
+  .bookmark{
+    width:640px;
+    background:var(--paper);
+    border-radius:28px;
+    padding:70px 56px 60px;
+    box-shadow:0 18px 50px rgba(90,80,60,.14);
+    position:relative;
+  }
+  .bookmark::before{
+    content:"";
+    position:absolute;inset:16px;
+    border:1.6px dashed #C9C1B0;
+    border-radius:20px;
+    pointer-events:none;
+  }
+  .art{display:flex;justify-content:center;margin-bottom:34px;}
+  .date{
+    text-align:center;
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:17px;letter-spacing:.55em;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .date::after{
+    content:"";display:block;width:30px;height:2px;
+    background:#C9C1B0;margin:14px auto 0;
+  }
+  h1{
+    text-align:center;
+    /* 標題過長(9-10字)時：font-size 可縮至 38px、letter-spacing 可減至 .08~.10em */
+    font-size:40px;font-weight:700;
+    letter-spacing:.14em;
+    margin:30px 0 10px;
+  }
+  .subtitle{
+    text-align:center;
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:15px;letter-spacing:.42em;
+    color:#B3AC9E;
+    margin-bottom:28px; /* 有經節區塊時用 28px；若不放經節可改回 40px */
+  }
+  /* 標題後的經文引句區塊（選用）：放 1-2 節當日主題經文 */
+  .verse{
+    text-align:center;
+    margin:0 20px 36px;
+    padding:20px 20px 22px;
+    background:#FCF8EF;
+    border:1px solid #E7DFCC;
+    border-radius:14px;
+  }
+  .verse .txt{
+    font-size:18px;line-height:1.9;letter-spacing:.04em;color:#5A5346;
+  }
+  .verse .ref{
+    display:block;margin-top:10px;
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:13px;letter-spacing:.16em;color:#B08A54;
+  }
+  p.body{
+    font-size:21px;line-height:2.15;
+    text-align:justify;
+    letter-spacing:.06em;
+    margin-bottom:30px;
+  }
+  .quote{
+    border-left:3px solid #CFC7B4; /* 明亮版可改 #D8C58A */
+    margin:36px 8px 40px 18px;
+    padding:6px 6px 6px 26px;
+    font-style:italic;
+    font-size:20px;line-height:2.2;
+    letter-spacing:.05em;
+    color:#4A463E;
+  }
+  .footer{
+    margin-top:46px;
+    border-top:1px solid #DDD6C7;
+    padding-top:26px;
+    text-align:center;
+  }
+  .footer .en{
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:15px;letter-spacing:.4em;
+    color:#B3AC9E;margin-bottom:14px;
+  }
+  .footer .bless{
+    font-size:19px;font-weight:700;letter-spacing:.12em;
+  }
+</style>
+</head>
+<body>
+<div class="bookmark">
+
+  <!-- REPLACE: 置換為當日主題的 SVG 插圖。務必保留系列一致元素：晨光+淡化十字、木籬笆、野花、飛鳥、落葉、地面線。viewBox 用 0 0 440 300。 -->
+  <div class="art">
+    <svg width="440" height="300" viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#FBE9A6" stop-opacity=".95"/>
+          <stop offset="55%" stop-color="#F6E2A0" stop-opacity=".45"/>
+          <stop offset="100%" stop-color="#F6E2A0" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- 晨光與隱約的十字光暈（系列一致，必備） -->
+      <circle cx="352" cy="72" r="58" fill="url(#glow)"/>
+      <circle cx="352" cy="72" r="21" fill="#F8E7A4"/>
+      <line x1="352" y1="26" x2="352" y2="118" stroke="#EED992" stroke-width="2.4" opacity=".55"/>
+      <line x1="312" y1="66" x2="392" y2="66" stroke="#EED992" stroke-width="2.4" opacity=".55"/>
+
+      <!-- 遠方緩丘 -->
+      <path d="M8 196 Q120 176 236 188 Q346 198 434 180"
+            fill="none" stroke="#B9AE97" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+
+      <!-- 主體：完工城牆＋慶祝旗幟＋豎琴音符＋香煙（辛苦後慶祝） -->
+      <!-- 完工的低矮石牆 -->
+      <rect x="60" y="222" width="320" height="48" rx="2" fill="#E4D9C2" stroke="#9A6B52" stroke-width="3"/>
+      <line x1="60" y1="246" x2="380" y2="246" stroke="#B9AE97" stroke-width="1.6" opacity=".7"/>
+      <line x1="110" y1="222" x2="110" y2="246" stroke="#B9AE97" stroke-width="1.4" opacity=".6"/>
+      <line x1="180" y1="246" x2="180" y2="270" stroke="#B9AE97" stroke-width="1.4" opacity=".6"/>
+      <line x1="250" y1="222" x2="250" y2="246" stroke="#B9AE97" stroke-width="1.4" opacity=".6"/>
+      <line x1="320" y1="246" x2="320" y2="270" stroke="#B9AE97" stroke-width="1.4" opacity=".6"/>
+      <rect x="66" y="206" width="16" height="16" fill="#E4D9C2" stroke="#9A6B52" stroke-width="2.4"/>
+      <rect x="106" y="206" width="16" height="16" fill="#E4D9C2" stroke="#9A6B52" stroke-width="2.4"/>
+      <rect x="146" y="206" width="16" height="16" fill="#E4D9C2" stroke="#9A6B52" stroke-width="2.4"/>
+      <rect x="186" y="206" width="16" height="16" fill="#E4D9C2" stroke="#9A6B52" stroke-width="2.4"/>
+      <rect x="226" y="206" width="16" height="16" fill="#E4D9C2" stroke="#9A6B52" stroke-width="2.4"/>
+      <rect x="266" y="206" width="16" height="16" fill="#E4D9C2" stroke="#9A6B52" stroke-width="2.4"/>
+      <rect x="306" y="206" width="16" height="16" fill="#E4D9C2" stroke="#9A6B52" stroke-width="2.4"/>
+      <rect x="346" y="206" width="16" height="16" fill="#E4D9C2" stroke="#9A6B52" stroke-width="2.4"/>
+
+      <!-- 慶祝旗幟串，橫掛在城牆上方 -->
+      <path d="M84 158 Q220 182 356 158" fill="none" stroke="#B9AE97" stroke-width="2"/>
+      <path d="M108 163 L124 163 L116 181 Z" fill="#8FA382"/>
+      <path d="M150 170 L166 170 L158 188 Z" fill="#E3C282"/>
+      <path d="M192 174 L208 174 L200 192 Z" fill="#9A6B52"/>
+      <path d="M234 174 L250 174 L242 192 Z" fill="#8FA382"/>
+      <path d="M276 170 L292 170 L284 188 Z" fill="#E3C282"/>
+      <path d="M316 163 L332 163 L324 181 Z" fill="#9A6B52"/>
+
+      <!-- 豎琴與飄起的音符（城牆右側） -->
+      <path d="M312 258 L312 202 Q326 190 340 202 L340 258" fill="none" stroke="#9A6B52" stroke-width="3" stroke-linecap="round"/>
+      <line x1="317" y1="207" x2="317" y2="255" stroke="#C9BFA8" stroke-width="1.3"/>
+      <line x1="322" y1="200" x2="322" y2="255" stroke="#C9BFA8" stroke-width="1.3"/>
+      <line x1="328" y1="197" x2="328" y2="255" stroke="#C9BFA8" stroke-width="1.3"/>
+      <line x1="334" y1="200" x2="334" y2="255" stroke="#C9BFA8" stroke-width="1.3"/>
+      <circle cx="356" cy="182" r="4" fill="#8FA382"/>
+      <line x1="360" y1="182" x2="360" y2="164" stroke="#8FA382" stroke-width="1.6"/>
+      <circle cx="374" cy="164" r="3.4" fill="#E3C282"/>
+      <line x1="377.4" y1="164" x2="377.4" y2="150" stroke="#E3C282" stroke-width="1.4"/>
+
+      <!-- 香煙裊裊（城牆左前方） -->
+      <ellipse cx="152" cy="266" rx="13" ry="5" fill="#C9BFA8"/>
+      <line x1="152" y1="266" x2="152" y2="272" stroke="#A08A6E" stroke-width="2.2"/>
+      <path d="M152 258 C147 244 158 234 150 218 C144 206 154 198 148 184"
+            fill="none" stroke="#B9AE97" stroke-width="2" opacity=".55" stroke-linecap="round"/>
+
+      <!-- 地面線 -->
+      <line x1="40" y1="278" x2="404" y2="278" stroke="#C9BFA8" stroke-width="2.6" stroke-linecap="round" opacity=".8"/>
+
+      <!-- 木籬笆（左側，系列一致，必備） -->
+      <line x1="50" y1="230" x2="50" y2="278" stroke="#A08A6E" stroke-width="4" stroke-linecap="round"/>
+      <line x1="74" y1="226" x2="74" y2="274" stroke="#A08A6E" stroke-width="4" stroke-linecap="round"/>
+      <line x1="36" y1="244" x2="88" y2="238" stroke="#A08A6E" stroke-width="3.2" stroke-linecap="round"/>
+      <line x1="36" y1="264" x2="88" y2="258" stroke="#A08A6E" stroke-width="3.2" stroke-linecap="round"/>
+
+      <!-- 野花小草（系列一致） -->
+      <path d="M104 278 C102 268 96 262 90 258" fill="none" stroke="#8FA382" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="88" cy="256" r="4.6" fill="#E3C282"/>
+      <path d="M320 278 C322 270 326 264 332 260" fill="none" stroke="#8FA382" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="334" cy="258" r="4.2" fill="#D9A38B"/>
+
+      <!-- 飛鳥（系列一致） -->
+      <path d="M96 92 q9 -9 18 0 q9 -9 18 0" fill="none" stroke="#8B8474" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M150 112 q7 -7 14 0 q7 -7 14 0" fill="none" stroke="#A29B8B" stroke-width="2.2" stroke-linecap="round"/>
+
+      <!-- 落葉一枚（系列一致） -->
+      <ellipse cx="392" cy="150" rx="10" ry="4.5" transform="rotate(-24 392 150)"
+               fill="none" stroke="#C9B294" stroke-width="2.2"/>
+    </svg>
+  </div>
+
+  <div class="date">2026 / 08 / 19</div>
+
+  <h1>讓喜悅被聽見</h1>
+  <div class="subtitle">LET YOUR JOY BE HEARD</div>
+
+  <div class="verse">
+    <div class="txt">「那日，眾人獻大祭而歡樂，因為神使他們大大歡樂，<br>連婦女帶孩童也都歡樂，甚至耶路撒冷中的歡聲聽到遠處。」</div>
+    <span class="ref">尼希米記 12 : 43</span>
+  </div>
+
+  <p class="body">有些事，你明明做完了，卻只敢在心裡偷偷鬆一口氣——好像大聲慶祝，會顯得太用力、太張揚。於是悄悄闔上那個檔案、倒了杯水，一個人消化那份「終於做完了」的感覺，沒有讓誰知道。</p>
+
+  <p class="body">聖經的尼希米記裡，城牆修完的那天，眾人沒有小聲收工。他們把各地的利未人請來耶路撒冷，稱謝、歌唱、敲鈸、鼓瑟、彈琴，連婦女、孩童都一起歡樂，<strong>「甚至耶路撒冷中的歡聲聽到遠處」</strong>。慶祝過後，還有人被特別派去管理庫房，確保天天默默唱詩、守門的人，都能按時領到該有的一份——歡喜被聽見了，付出也沒有被忘記。</p>
+
+  <div class="quote">「值得慶祝的事，不必小小聲。」</div>
+
+  <p class="body">週三的清晨，如果你也完成了什麼——哪怕只是一件小事——不妨大方一點，說給一個人聽，讓那份喜悅被聽見，而不是自己悄悄收進心裡就算了。若你好奇這股歡聲從何而來，歡迎有一天翻開聖經裡的尼希米記。</p>
+
+  <div class="footer">
+    <div class="en">NEHEMIAH 12 : 27 – 47</div>
+    <div class="bless">願神祝福你：所做的工，皆蒙看見</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+  每日經文早安賀卡 - 標準樣板
+  使用方式：複製本檔，替換 REPLACE 標記處的內容，勿更動 CSS。
+  明亮版（復活之後）：見 CLAUDE.md「明亮版配色」，替換 body 背景、--paper、太陽色與 .quote 邊框色。
+  注意：內容區強調一律用 <strong>，切勿用 Markdown 星號。
+-->
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --paper:#F7F3EA;
+    --bg:#E9E4DA;
+    --ink:#3E3A33;
+    --ink-soft:#7A756B;
+    --sage:#8FA382;
+    --wheat:#E3C282;
+    --barn:#9A6B52;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    width:900px;
+    background:radial-gradient(1200px 900px at 30% 20%, #F0EBE1 0%, var(--bg) 70%);
+    font-family:"Noto Serif CJK TC","Noto Serif TC",serif;
+    color:var(--ink);
+    display:flex;justify-content:center;
+    padding:60px 0;
+  }
+  .bookmark{
+    width:640px;
+    background:var(--paper);
+    border-radius:28px;
+    padding:70px 56px 60px;
+    box-shadow:0 18px 50px rgba(90,80,60,.14);
+    position:relative;
+  }
+  .bookmark::before{
+    content:"";
+    position:absolute;inset:16px;
+    border:1.6px dashed #C9C1B0;
+    border-radius:20px;
+    pointer-events:none;
+  }
+  .art{display:flex;justify-content:center;margin-bottom:34px;}
+  .date{
+    text-align:center;
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:17px;letter-spacing:.55em;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .date::after{
+    content:"";display:block;width:30px;height:2px;
+    background:#C9C1B0;margin:14px auto 0;
+  }
+  h1{
+    text-align:center;
+    /* 標題過長(9-10字)時：font-size 可縮至 38px、letter-spacing 可減至 .08~.10em */
+    font-size:40px;font-weight:700;
+    letter-spacing:.14em;
+    margin:30px 0 10px;
+  }
+  .subtitle{
+    text-align:center;
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:15px;letter-spacing:.42em;
+    color:#B3AC9E;
+    margin-bottom:28px; /* 有經節區塊時用 28px；若不放經節可改回 40px */
+  }
+  /* 標題後的經文引句區塊（選用）：放 1-2 節當日主題經文 */
+  .verse{
+    text-align:center;
+    margin:0 20px 36px;
+    padding:20px 20px 22px;
+    background:#FCF8EF;
+    border:1px solid #E7DFCC;
+    border-radius:14px;
+  }
+  .verse .txt{
+    font-size:18px;line-height:1.9;letter-spacing:.04em;color:#5A5346;
+  }
+  .verse .ref{
+    display:block;margin-top:10px;
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:13px;letter-spacing:.16em;color:#B08A54;
+  }
+  p.body{
+    font-size:21px;line-height:2.15;
+    text-align:justify;
+    letter-spacing:.06em;
+    margin-bottom:30px;
+  }
+  .quote{
+    border-left:3px solid #CFC7B4; /* 明亮版可改 #D8C58A */
+    margin:36px 8px 40px 18px;
+    padding:6px 6px 6px 26px;
+    font-style:italic;
+    font-size:20px;line-height:2.2;
+    letter-spacing:.05em;
+    color:#4A463E;
+  }
+  .footer{
+    margin-top:46px;
+    border-top:1px solid #DDD6C7;
+    padding-top:26px;
+    text-align:center;
+  }
+  .footer .en{
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:15px;letter-spacing:.4em;
+    color:#B3AC9E;margin-bottom:14px;
+  }
+  .footer .bless{
+    font-size:19px;font-weight:700;letter-spacing:.12em;
+  }
+</style>
+</head>
+<body>
+<div class="bookmark">
+
+  <!-- REPLACE: 置換為當日主題的 SVG 插圖。務必保留系列一致元素：晨光+淡化十字、木籬笆、野花、飛鳥、落葉、地面線。viewBox 用 0 0 440 300。 -->
+  <div class="art">
+    <svg width="440" height="300" viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#FBE9A6" stop-opacity=".95"/>
+          <stop offset="55%" stop-color="#F6E2A0" stop-opacity=".45"/>
+          <stop offset="100%" stop-color="#F6E2A0" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- 晨光與隱約的十字光暈（系列一致，必備） -->
+      <circle cx="352" cy="72" r="58" fill="url(#glow)"/>
+      <circle cx="352" cy="72" r="21" fill="#F8E7A4"/>
+      <line x1="352" y1="26" x2="352" y2="118" stroke="#EED992" stroke-width="2.4" opacity=".55"/>
+      <line x1="312" y1="66" x2="392" y2="66" stroke="#EED992" stroke-width="2.4" opacity=".55"/>
+
+      <!-- 遠方緩丘 -->
+      <path d="M8 196 Q120 176 236 188 Q346 198 434 180"
+            fill="none" stroke="#B9AE97" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+
+      <!-- 主體：窗外遠處的宴席燈火（被拒絕的展示場合）＋放下的冠冕（不肯被觀看的尊嚴） -->
+      <path d="M90 190 L90 130 Q130 90 170 130 L170 190 Z" fill="none" stroke="#9A6B52" stroke-width="3"/>
+      <line x1="130" y1="90" x2="130" y2="190" stroke="#C9BFA8" stroke-width="1.6" opacity=".6"/>
+      <line x1="90" y1="150" x2="170" y2="150" stroke="#C9BFA8" stroke-width="1.6" opacity=".6"/>
+      <ellipse cx="130" cy="146" rx="42" ry="32" fill="url(#glow)" opacity=".3"/>
+      <circle cx="106" cy="164" r="3" fill="#F1D68C"/>
+      <circle cx="121" cy="144" r="2.6" fill="#F1D68C"/>
+      <circle cx="141" cy="167" r="3" fill="#F1D68C"/>
+      <circle cx="155" cy="149" r="2.6" fill="#F1D68C"/>
+
+      <line x1="279" y1="232" x2="279" y2="270" stroke="#9A6B52" stroke-width="8" stroke-linecap="round"/>
+      <ellipse cx="279" cy="230" rx="32" ry="9" fill="#E3C9A0" stroke="#9A6B52" stroke-width="2"/>
+      <path d="M261 208 L268 188 L279 202 L290 188 L297 208 Z" fill="none" stroke="#C79A46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <ellipse cx="279" cy="209" rx="19" ry="6" fill="none" stroke="#C79A46" stroke-width="3"/>
+      <circle cx="268" cy="188" r="3" fill="#D9A38B"/>
+      <circle cx="290" cy="188" r="3" fill="#8FA382"/>
+      <circle cx="279" cy="202" r="3" fill="#E3C282"/>
+
+      <!-- 地面線 -->
+      <line x1="40" y1="278" x2="404" y2="278" stroke="#C9BFA8" stroke-width="2.6" stroke-linecap="round" opacity=".8"/>
+
+      <!-- 木籬笆（左側，系列一致，必備） -->
+      <line x1="50" y1="230" x2="50" y2="278" stroke="#A08A6E" stroke-width="4" stroke-linecap="round"/>
+      <line x1="74" y1="226" x2="74" y2="274" stroke="#A08A6E" stroke-width="4" stroke-linecap="round"/>
+      <line x1="36" y1="244" x2="88" y2="238" stroke="#A08A6E" stroke-width="3.2" stroke-linecap="round"/>
+      <line x1="36" y1="264" x2="88" y2="258" stroke="#A08A6E" stroke-width="3.2" stroke-linecap="round"/>
+
+      <!-- 野花小草（系列一致） -->
+      <path d="M104 278 C102 268 96 262 90 258" fill="none" stroke="#8FA382" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="88" cy="256" r="4.6" fill="#E3C282"/>
+      <path d="M320 278 C322 270 326 264 332 260" fill="none" stroke="#8FA382" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="334" cy="258" r="4.2" fill="#D9A38B"/>
+
+      <!-- 飛鳥（系列一致） -->
+      <path d="M96 92 q9 -9 18 0 q9 -9 18 0" fill="none" stroke="#8B8474" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M150 112 q7 -7 14 0 q7 -7 14 0" fill="none" stroke="#A29B8B" stroke-width="2.2" stroke-linecap="round"/>
+
+      <!-- 落葉一枚（系列一致） -->
+      <ellipse cx="392" cy="150" rx="10" ry="4.5" transform="rotate(-24 392 150)"
+               fill="none" stroke="#C9B294" stroke-width="2.2"/>
+    </svg>
+  </div>
+
+  <div class="date">2026 / 08 / 23</div>
+
+  <h1>不肯被展示的尊嚴</h1>
+  <div class="subtitle">NOT ON DISPLAY</div>
+
+  <div class="verse">
+    <div class="txt">「王后瓦實提卻不肯遵太監所傳的王命而來，<br>所以王甚發怒，心如火燒。」</div>
+    <span class="ref">以斯帖記 1 : 12</span>
+  </div>
+
+  <p class="body">有沒有那種被叫上台的時刻？大家的目光一起看過來，等你展示、等你配合、等你笑得剛剛好。你明明沒做錯什麼，卻覺得渾身不自在，好像自己成了一件被拿出來看的東西，而不是一個人。</p>
+
+  <p class="body">聖經的以斯帖記裡，波斯王亞哈隨魯大擺筵席一百八十日炫耀國威，又設七日盛宴。酒酣之際，他傳令要王后瓦實提戴上冠冕到眾臣面前，讓大家看她的美貌。經上直白地寫著：<strong>「王后瓦實提卻不肯遵太監所傳的王命而來」</strong>。這個決定讓王勃然大怒，最終降旨廢了她的后位——她付出了代價，卻沒有把自己交出去。</p>
+
+  <div class="quote">「不肯被觀看，也是一種尊嚴。」</div>
+
+  <p class="body">週日的清晨，也許你也曾被期待要笑、要配合、要表現得剛剛好。不必因為拒絕而覺得自己不識大體——有些界線，寧可付代價也值得守住。若你好奇瓦實提之後，誰接下了那個位置，歡迎有一天翻開聖經裡的以斯帖記。</p>
+
+  <div class="footer">
+    <div class="en">ESTHER 1 : 1 – 22</div>
+    <div class="bless">願神祝福你：忠於自己，心安理得</div>
+  </div>
+
+</div>
+</body>
+</html>

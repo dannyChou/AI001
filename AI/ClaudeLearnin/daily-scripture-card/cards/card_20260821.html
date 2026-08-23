@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+  每日經文早安賀卡 - 標準樣板
+  使用方式：複製本檔，替換 REPLACE 標記處的內容，勿更動 CSS。
+  明亮版（復活之後）：見 CLAUDE.md「明亮版配色」，替換 body 背景、--paper、太陽色與 .quote 邊框色。
+  注意：內容區強調一律用 <strong>，切勿用 Markdown 星號。
+-->
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --paper:#F7F3EA;
+    --bg:#E9E4DA;
+    --ink:#3E3A33;
+    --ink-soft:#7A756B;
+    --sage:#8FA382;
+    --wheat:#E3C282;
+    --barn:#9A6B52;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    width:900px;
+    background:radial-gradient(1200px 900px at 30% 20%, #F0EBE1 0%, var(--bg) 70%);
+    font-family:"Noto Serif CJK TC","Noto Serif TC",serif;
+    color:var(--ink);
+    display:flex;justify-content:center;
+    padding:60px 0;
+  }
+  .bookmark{
+    width:640px;
+    background:var(--paper);
+    border-radius:28px;
+    padding:70px 56px 60px;
+    box-shadow:0 18px 50px rgba(90,80,60,.14);
+    position:relative;
+  }
+  .bookmark::before{
+    content:"";
+    position:absolute;inset:16px;
+    border:1.6px dashed #C9C1B0;
+    border-radius:20px;
+    pointer-events:none;
+  }
+  .art{display:flex;justify-content:center;margin-bottom:34px;}
+  .date{
+    text-align:center;
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:17px;letter-spacing:.55em;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .date::after{
+    content:"";display:block;width:30px;height:2px;
+    background:#C9C1B0;margin:14px auto 0;
+  }
+  h1{
+    text-align:center;
+    /* 標題過長(9-10字)時：font-size 可縮至 38px、letter-spacing 可減至 .08~.10em */
+    font-size:40px;font-weight:700;
+    letter-spacing:.14em;
+    margin:30px 0 10px;
+  }
+  .subtitle{
+    text-align:center;
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:15px;letter-spacing:.42em;
+    color:#B3AC9E;
+    margin-bottom:28px; /* 有經節區塊時用 28px；若不放經節可改回 40px */
+  }
+  /* 標題後的經文引句區塊（選用）：放 1-2 節當日主題經文 */
+  .verse{
+    text-align:center;
+    margin:0 20px 36px;
+    padding:20px 20px 22px;
+    background:#FCF8EF;
+    border:1px solid #E7DFCC;
+    border-radius:14px;
+  }
+  .verse .txt{
+    font-size:18px;line-height:1.9;letter-spacing:.04em;color:#5A5346;
+  }
+  .verse .ref{
+    display:block;margin-top:10px;
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:13px;letter-spacing:.16em;color:#B08A54;
+  }
+  p.body{
+    font-size:21px;line-height:2.15;
+    text-align:justify;
+    letter-spacing:.06em;
+    margin-bottom:30px;
+  }
+  .quote{
+    border-left:3px solid #CFC7B4; /* 明亮版可改 #D8C58A */
+    margin:36px 8px 40px 18px;
+    padding:6px 6px 6px 26px;
+    font-style:italic;
+    font-size:20px;line-height:2.2;
+    letter-spacing:.05em;
+    color:#4A463E;
+  }
+  .footer{
+    margin-top:46px;
+    border-top:1px solid #DDD6C7;
+    padding-top:26px;
+    text-align:center;
+  }
+  .footer .en{
+    font-family:"Noto Sans CJK TC",sans-serif;
+    font-size:15px;letter-spacing:.4em;
+    color:#B3AC9E;margin-bottom:14px;
+  }
+  .footer .bless{
+    font-size:19px;font-weight:700;letter-spacing:.12em;
+  }
+</style>
+</head>
+<body>
+<div class="bookmark">
+
+  <!-- REPLACE: 置換為當日主題的 SVG 插圖。務必保留系列一致元素：晨光+淡化十字、木籬笆、野花、飛鳥、落葉、地面線。viewBox 用 0 0 440 300。 -->
+  <div class="art">
+    <svg width="440" height="300" viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#FBE9A6" stop-opacity=".95"/>
+          <stop offset="55%" stop-color="#F6E2A0" stop-opacity=".45"/>
+          <stop offset="100%" stop-color="#F6E2A0" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- 晨光與隱約的十字光暈（系列一致，必備） -->
+      <circle cx="352" cy="72" r="58" fill="url(#glow)"/>
+      <circle cx="352" cy="72" r="21" fill="#F8E7A4"/>
+      <line x1="352" y1="26" x2="352" y2="118" stroke="#EED992" stroke-width="2.4" opacity=".55"/>
+      <line x1="312" y1="66" x2="392" y2="66" stroke="#EED992" stroke-width="2.4" opacity=".55"/>
+
+      <!-- 遠方緩丘 -->
+      <path d="M8 196 Q120 176 236 188 Q346 198 434 180"
+            fill="none" stroke="#B9AE97" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+
+      <!-- 主體：關緊的雙開城門＋門閂＋守門燈籠＋門外被擱下的貨筐（守住安息的界線） -->
+      <path d="M150 270 L150 186 Q190 152 230 186 L230 270" fill="none" stroke="#9A6B52" stroke-width="3"/>
+      <line x1="190" y1="160" x2="190" y2="270" stroke="#C9BFA8" stroke-width="1.6" opacity=".6"/>
+      <rect x="152" y="196" width="35" height="72" rx="3" fill="#E3C9A0" stroke="#9A6B52" stroke-width="2.4"/>
+      <rect x="193" y="196" width="35" height="72" rx="3" fill="#DCC090" stroke="#9A6B52" stroke-width="2.4"/>
+      <line x1="150" y1="224" x2="230" y2="220" stroke="#7A5236" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="190" cy="222" r="5" fill="#7A5236"/>
+
+      <line x1="252" y1="270" x2="252" y2="196" stroke="#A08A6E" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M243 200 L252 190 L261 200 Z" fill="#9A6B52"/>
+      <ellipse cx="252" cy="186" rx="20" ry="14" fill="url(#glow)" opacity=".8"/>
+      <rect x="244" y="176" width="16" height="18" rx="3" fill="#F1D68C" stroke="#B08A54" stroke-width="1.6"/>
+      <line x1="244" y1="185" x2="260" y2="185" stroke="#B08A54" stroke-width="1.2" opacity=".7"/>
+
+      <ellipse cx="304" cy="266" rx="20" ry="7" fill="#DDD2B4" opacity=".7"/>
+      <path d="M288 266 L292 244 L320 244 L324 266 Z" fill="#D9A38B" stroke="#9A6B52" stroke-width="2"/>
+      <line x1="292" y1="252" x2="320" y2="252" stroke="#9A6B52" stroke-width="1.4" opacity=".7"/>
+
+      <!-- 地面線 -->
+      <line x1="40" y1="278" x2="404" y2="278" stroke="#C9BFA8" stroke-width="2.6" stroke-linecap="round" opacity=".8"/>
+
+      <!-- 木籬笆（左側，系列一致，必備） -->
+      <line x1="50" y1="230" x2="50" y2="278" stroke="#A08A6E" stroke-width="4" stroke-linecap="round"/>
+      <line x1="74" y1="226" x2="74" y2="274" stroke="#A08A6E" stroke-width="4" stroke-linecap="round"/>
+      <line x1="36" y1="244" x2="88" y2="238" stroke="#A08A6E" stroke-width="3.2" stroke-linecap="round"/>
+      <line x1="36" y1="264" x2="88" y2="258" stroke="#A08A6E" stroke-width="3.2" stroke-linecap="round"/>
+
+      <!-- 野花小草（系列一致） -->
+      <path d="M104 278 C102 268 96 262 90 258" fill="none" stroke="#8FA382" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="88" cy="256" r="4.6" fill="#E3C282"/>
+      <path d="M320 278 C322 270 326 264 332 260" fill="none" stroke="#8FA382" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="334" cy="258" r="4.2" fill="#D9A38B"/>
+
+      <!-- 飛鳥（系列一致） -->
+      <path d="M96 92 q9 -9 18 0 q9 -9 18 0" fill="none" stroke="#8B8474" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M150 112 q7 -7 14 0 q7 -7 14 0" fill="none" stroke="#A29B8B" stroke-width="2.2" stroke-linecap="round"/>
+
+      <!-- 落葉一枚（系列一致） -->
+      <ellipse cx="392" cy="150" rx="10" ry="4.5" transform="rotate(-24 392 150)"
+               fill="none" stroke="#C9B294" stroke-width="2.2"/>
+    </svg>
+  </div>
+
+  <div class="date">2026 / 08 / 21</div>
+
+  <h1>把休息的門關好</h1>
+  <div class="subtitle">GUARD THE DAY OF REST</div>
+
+  <div class="verse">
+    <div class="txt">「耶路撒冷城門有黑影的時候，我就吩咐人將門關鎖，<br>不過安息日不准開放。」</div>
+    <span class="ref">尼希米記 13 : 19</span>
+  </div>
+
+  <p class="body">你有沒有發現，休假這件事，光「排」出來還不夠。訊息一樣會震動，群組一樣有人在討論工作，總有件事覺得「順便」處理一下也好。不知不覺，該歇的那天，還是被切成了一半，什麼都沒真的放下。</p>
+
+  <p class="body">聖經的尼希米記裡，尼希米回到耶路撒冷後，發現安息日城裡照樣有人做買賣——踹酒醡的、運貨的，連外邦商人都趁機把魚貨運進城裡叫賣。他沒有只是勸導，而是動手做了一件很具體的事：<strong>「耶路撒冷城門有黑影的時候，我就吩咐人將門關鎖，不過安息日不准開放」</strong>，還親自派人守著城門，商人想在城外賴著等開門，他也把話說清楚，不再讓步。休息這件事，原來得先從守住入口開始。</p>
+
+  <div class="quote">「守住休息，先從守住入口開始。」</div>
+
+  <p class="body">週五的清晨，不妨想想這個週末，有沒有哪個「順便」該被擋在門外——多回一則訊息、多想一件待辦、那種覺得自己應該再撐一下的心情。把門關上一下，不是自私，是讓自己真的有機會喘口氣。若你好奇尼希米後來怎麼守住這座城的安息，歡迎有一天翻開聖經裡的尼希米記。</p>
+
+  <div class="footer">
+    <div class="en">NEHEMIAH 13 : 15 – 22</div>
+    <div class="bless">願神祝福你：安息有時，生活有序</div>
+  </div>
+
+</div>
+</body>
+</html>
