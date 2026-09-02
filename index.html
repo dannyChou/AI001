@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprolink NeoLIVE N5 教會導播機 — 教育訓練與主日事奉手冊</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --secondary: #059669;
+      --accent: #d97706;
+      --danger: #dc2626;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: white;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    header p { color: #93c5fd; font-size: 1.1rem; }
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+    }
+    .tab-btn:hover { color: white; background: rgba(255,255,255,0.05); }
+    .tab-btn.active {
+      color: white;
+      border-bottom-color: var(--primary-light);
+      background: rgba(59, 130, 246, 0.1);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; animation: fadeIn 0.3s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+      border: 1px solid var(--border);
+    }
+    h2 { color: var(--primary); font-size: 1.6rem; margin-bottom: 1.2rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+    h3 { color: #334155; font-size: 1.3rem; margin: 1.5rem 0 0.8rem; }
+    p, li { margin-bottom: 0.6rem; }
+    ul, ol { padding-left: 1.5rem; }
+    
+    .img-box {
+      text-align: center;
+      margin: 1.5rem 0;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 0.5rem;
+    }
+    .img-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .img-caption {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th { background: #f1f5f9; color: #1e293b; font-weight: 600; }
+    tr:nth-child(even) { background: #f8fafc; }
+    
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .badge-red { background: #fee2e2; color: #991b1b; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-yellow { background: #fef3c7; color: #92400e; }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    
+    .alert {
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      margin: 1.2rem 0;
+      border-left: 4px solid;
+    }
+    .alert-warning { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
+    .alert-info { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
+    .alert-danger { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+    
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.3rem;
+      margin-right: 0.8rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      cursor: pointer;
+    }
+    .print-btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      border: none;
+    }
+    .print-btn:hover { background: #047857; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Sprolink NeoLIVE N5 教會導播機</h1>
+  <p>教育訓練手冊、主日崇拜標準作業程序 (SOP) 與服事檢核清單</p>
+</header>
+
+<nav class="nav-tabs">
+  <button class="tab-btn active" onclick="switchTab('tab-guide')">📖 01. 新手入門圖文指南</button>
+  <button class="tab-btn" onclick="switchTab('tab-sop')">⏱️ 02. 主日崇拜操作 SOP</button>
+  <button class="tab-btn" onclick="switchTab('tab-checklist')">✅ 03. 服事檢核表 & 排錯</button>
+  <button class="tab-btn" onclick="switchTab('tab-cheatsheet')">⚡ 00. 快速速查卡</button>
+</nav>
+
+<div class="container">
+
+  <!-- TAB 1: GUIDE -->
+  <div id="tab-guide" class="tab-pane active">
+    <div class="card">
+      <h2>模組一：硬體外觀與介面配置</h2>
+      <p>Sprolink NeoLIVE N5 採用便攜式手提箱一體成型設計，內建 <strong>10.1 吋高解析 TFT 液晶螢幕</strong>，將導播台、多畫面監看器、混音器與 PTZ 攝影機控制器高度整合。</p>
+      <div class="img-box">
+        <img src="assets/screenshots/IMG_2470_00m30s.jpg" alt="NeoLIVE N5 實機配置">
+        <div class="img-caption">圖 1-1：導播台控制中心與實機配置</div>
+      </div>
+      <h3>後面板線路接駁指南</h3>
+      <div class="img-box">
+        <img src="assets/screenshots/IMG_2470_02m00s.jpg" alt="後面板接線">
+        <div class="img-caption">圖 1-2：後面板 HDMI 訊號線與音響混音訊號連接</div>
+      </div>
+      <ul>
+        <li><strong>IN 1 / IN 2</strong>：支援最高 4K UHD 訊號（主講台十字架/牧師特寫、主堂全景）。</li>
+        <li><strong>IN 3 / IN 4</strong>：支援 1080P HD 訊號（敬拜團樂手、PPT 詩歌投影電腦）。</li>
+        <li><strong>MIC 1 / 2</strong>：3.5mm 音訊輸入，連接大堂音響 Mixer 輸出。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>模組二：Multiview 多畫面監看</h2>
+      <div class="img-box">
+        <img src="assets/screenshots/IMG_2470_04m00s.jpg" alt="Multiview 螢幕分割">
+        <div class="img-caption">圖 2-1：10.1 吋 TFT 液晶螢幕各區域狀態</div>
+      </div>
+      <div class="grid-2">
+        <div style="background:#f1f5f9; padding:1rem; border-radius:8px;">
+          <h4 style="color:#166534;">🟢 PVW 預監視窗 (左上綠框)</h4>
+          <p>顯示即將切入的待命畫面。導播必須在此視窗確認構圖與對焦無誤後方可切換。</p>
+        </div>
+        <div style="background:#fef2f2; padding:1rem; border-radius:8px;">
+          <h4 style="color:#991b1b;">🔴 PGM 主輸出視窗 (右上紅框)</h4>
+          <p>顯示目前正在正式直播與大堂投影的畫面，代表現場播出狀態。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>模組三：畫面切換與轉場實務 (CUT / AUTO / T-Bar)</h2>
+      <div class="img-box">
+        <img src="assets/screenshots/IMG_2470_08m00s.jpg" alt="轉場操作">
+        <div class="img-caption">圖 3-1：按鍵切換與轉場推桿實體操作</div>
+      </div>
+      <ul>
+        <li><strong>直切 (Hard Cut)</strong>：點選待命機位（亮綠燈）➡️ 按 <code>CUT</code> 瞬間切換。</li>
+        <li><strong>自動特效 (AUTO)</strong>：點選待命機位 ➡️ 按 <code>AUTO</code> 依設定之 0.5s~1.0s 自動平滑淡入。</li>
+        <li><strong>緊急淡黑 (FTB)</strong>：聚會開始前或結束後按 <code>FTB</code> 淡入純黑；若畫面全黑請再按一次恢復。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>模組四：雙子母畫面 (PIP) 與 LOGO 疊加</h2>
+      <div class="img-box">
+        <img src="assets/screenshots/IMG_2472_01m00s.jpg" alt="PIP 子母畫面">
+        <div class="img-caption">圖 4-1：主畫面 PPT + 右下角講員特寫子母畫面配置</div>
+      </div>
+      <p>講道時段建議使用 PIP 模式：按下 <code>PIP 1</code> ➡️ <code>PVW</code> 預覽 ➡️ <code>SET</code> 調節尺寸位置 ➡️ <code>PGM</code> 同步上屏。</p>
+    </div>
+
+    <div class="card">
+      <h2>模組五：混音台操作與音隨影動 (AFV)</h2>
+      <div class="img-box">
+        <img src="assets/screenshots/IMG_2473_02m00s.jpg" alt="音訊設定">
+        <div class="img-caption">圖 5-1：音量電平表監控與延遲校正</div>
+      </div>
+      <div class="alert alert-info">
+        <strong>💡 教會必設要點：</strong> 連接音響主控台的 <code>MIC 1</code> 必須設為 <strong>ON (常開)</strong>，切勿設為 AFV，以防止切換機位時講員聲音中斷！
+      </div>
+      <p>若發現聲音與講員嘴型不同步，旋轉 <code>DELAY</code> 旋鈕微調延遲毫秒 (ms) 直到對齊。</p>
+    </div>
+
+    <div class="card">
+      <h2>模組六：PTZ 攝影機操控與 10 組預置位</h2>
+      <div class="img-box">
+        <img src="assets/screenshots/IMG_2476_00m20s.jpg" alt="大堂機位視野">
+        <div class="img-caption">圖 6-1：大堂十字架、講台與會眾席全景</div>
+      </div>
+      <table>
+        <tr><th>預置位</th><th>鏡頭角度</th><th>說明</th></tr>
+        <tr><td><strong>1</strong></td><td>講台特寫 (Pulpit Close-up)</td><td>牧師講道、主席宣召半身景</td></tr>
+        <tr><td><strong>2</strong></td><td>講台全景 (Pulpit Wide)</td><td>十字架背景與講台全景</td></tr>
+        <tr><td><strong>3</strong></td><td>敬拜主領 / 司琴</td><td>主領特寫或司琴手部鏡頭</td></tr>
+        <tr><td><strong>4</strong></td><td>敬拜團全景</td><td>樂團全體畫面</td></tr>
+        <tr><td><strong>5</strong></td><td>會眾席全景</td><td>大堂會眾起立敬拜視野</td></tr>
+      </table>
+      <p><strong>操作技巧：</strong>在 PTZ 模式下，<strong>長按數字鍵儲存</strong>，<strong>短按數字鍵立即叫用</strong>。</p>
+    </div>
+  </div>
+
+  <!-- TAB 2: SOP -->
+  <div id="tab-sop" class="tab-pane">
+    <div class="card">
+      <h2>主日崇拜標準作業程序 (SOP)</h2>
+      <button class="print-btn" onclick="window.print()">🖨️ 列印此 SOP 手冊</button>
+      
+      <h3>1. 崇拜前 40 分鐘（準備期）</h3>
+      <ol>
+        <li>開啟電源排插，短按 NeoLIVE N5 開機。</li>
+        <li>確認 IN 1~4 視訊輸入皆正常有畫面（講台、全景、敬拜團、PPT）。</li>
+        <li>測試 PTZ 預置位 1~5 號鏡頭角度是否精準。</li>
+        <li>戴上監聽耳機，確認 MIC 1 音量正常且影音嘴型同步。</li>
+        <li>插入 NTFS 隨身碟，確認剩餘容量 > 30GB。</li>
+        <li>崇拜前 10 分鐘啟動直播串流 (STREAM)，切至開場圖卡。</li>
+      </ol>
+
+      <h3>2. 崇拜進行中（執行期）</h3>
+      <ul>
+        <li><strong>宣召與敬拜讚美</strong>：配合詩歌情緒切換主領特寫、敬拜團與會眾全景；慢歌用 AUTO，快歌用 CUT。</li>
+        <li><strong>主日講道信息</strong>：以講台半身特寫為主；講述經文時切換為 PPT + 講員 PIP 子母畫面。</li>
+        <li><strong>回應詩歌與祝禱</strong>：牧師舉手祝禱時切換為講台十字架全景。</li>
+      </ul>
+
+      <h3>3. 崇拜結束後（收尾期）</h3>
+      <div class="alert alert-danger">
+        <strong>⚠️ 最關鍵安全提醒：</strong> 停止錄影按 REC 後，<strong>必須等待 REC 燈完全熄滅</strong>，才可拔除隨身碟！強行拔出將導致錄影毀損！
+      </div>
+      <ol>
+        <li>祝禱結束散會音樂播放 1~2 分鐘後停止推流 (STREAM)。</li>
+        <li>停止錄影 (REC)，確認燈滅後拔除隨身碟並備份至 NAS。</li>
+        <li>長按電源鍵 3 秒安全關機，收納線路並蓋上防塵蓋。</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- TAB 3: CHECKLIST -->
+  <div id="tab-checklist" class="tab-pane">
+    <div class="card">
+      <h2>主日導播同工實機檢核清單 (Checklist)</h2>
+      <button class="print-btn" onclick="window.print()">🖨️ 列印本檢核表</button>
+
+      <h3>🕒 會前準備檢核（崇拜前 30 分鐘）</h3>
+      <div class="checklist-item"><input type="checkbox"> <span>1. NeoLIVE N5 開機與螢幕顯示正常</span></div>
+      <div class="checklist-item"><input type="checkbox"> <span>2. IN 1 講台攝影機、IN 2 全景攝影機訊號正常</span></div>
+      <div class="checklist-item"><input type="checkbox"> <span>3. IN 3 敬拜團機位、IN 4 PPT 簡報電腦訊號正常</span></div>
+      <div class="checklist-item"><input type="checkbox"> <span>4. PTZ 鏡頭 1~5 號預置位校準無誤</span></div>
+      <div class="checklist-item"><input type="checkbox"> <span>5. MIC 1 設為 ON (常開)，電平在綠色安全區間</span></div>
+      <div class="checklist-item"><input type="checkbox"> <span>6. 隨身碟已格式化為 NTFS，空間充足</span></div>
+      <div class="checklist-item"><input type="checkbox"> <span>7. 直播推流正常啟動</span></div>
+
+      <h3>🏁 會後收尾檢核</h3>
+      <div class="checklist-item"><input type="checkbox"> <span>1. 停止直播推流 (STREAM)</span></div>
+      <div class="checklist-item"><input type="checkbox"> <span>2. 停止錄影，<strong>等待 REC 燈完全熄滅後拔除隨身碟</strong></span></div>
+      <div class="checklist-item"><input type="checkbox"> <span>3. 長按電源鍵 3 秒安全關機</span></div>
+      <div class="checklist-item"><input type="checkbox"> <span>4. 錄影檔案備份歸檔至教會 NAS</span></div>
+    </div>
+
+    <div class="card">
+      <h2>常見緊急狀況排除 (Troubleshooting)</h2>
+      <table>
+        <tr><th>現象</th><th>原因</th><th>排除 SOP</th></tr>
+        <tr><td><strong>按鍵按了沒反應</strong></td><td>按鍵被鎖定</td><td><strong>短按一下 LOCK 鍵</strong> 即可解鎖。</td></tr>
+        <tr><td><strong>主畫面突然全黑</strong></td><td>誤觸 FTB 淡黑</td><td><strong>再按一下 FTB 鍵</strong> 即可恢復畫面！</td></tr>
+        <tr><td><strong>換畫面講員聲音不見</strong></td><td>誤設為 AFV</td><td>按 <code>AUDIO</code> 將 <strong>MIC 1 改為 ON (常開)</strong>。</td></tr>
+        <tr><td><strong>嘴型與聲音不同步</strong></td><td>視訊處理延遲</td><td>旋轉 <strong>DELAY 旋鈕</strong> 微調延遲毫秒數對齊嘴型。</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB 4: CHEATSHEET -->
+  <div id="tab-cheatsheet" class="tab-pane">
+    <div class="card">
+      <h2>快速上手速查卡 (CheatSheet)</h2>
+      <div class="alert alert-warning">
+        <strong>🚦 燈號辨識：</strong>
+        <span class="badge badge-red">🔴 紅燈</span> PGM 直播主畫面 ｜ 
+        <span class="badge badge-green">🟢 綠燈</span> PVW 預監待命 ｜ 
+        <span class="badge badge-yellow">🟡 黃/白燈</span> 功能啟用中
+      </div>
+      <h3>常用 5 大核心操作</h3>
+      <ul>
+        <li><strong>秒切畫面</strong>：按目標機位 (綠燈) ➡️ 按 <code>CUT</code></li>
+        <li><strong>平滑轉場</strong>：按目標機位 (綠燈) ➡️ 按 <code>AUTO</code></li>
+        <li><strong>子母畫面</strong>：<code>PIP 1</code> ➡️ <code>PVW</code> ➡️ <code>SET</code> 調整 ➡️ <code>PGM</code> 上屏</li>
+        <li><strong>鏡頭預置位</strong>：按 <code>PTZ</code> ➡️ 短按數字 <code>1</code>~<code>5</code> 立即就位</li>
+        <li><strong>一鍵靜音</strong>：短按 <code>VOLUME</code> 旋鈕</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>
