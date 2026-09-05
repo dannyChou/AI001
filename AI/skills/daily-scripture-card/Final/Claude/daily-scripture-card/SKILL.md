@@ -1,16 +1,16 @@
 ---
 name: daily-scripture-card
-description: Generate a "每日經文早安賀卡"（bookmark-style daily scripture morning card）from a Bible reading schedule — muted-Christian country/nature SVG art, verse excerpt, retina PNG output. Use when the user asks to make today's card, a card for a specific date, "套上次的程式" for this card project, pastes a QT/讀經進度表 and asks for a card, or references daily-scripture-card. Not for general Bible Q&A.
+description: Generate a "每日經文早安賀卡"（bookmark-style daily scripture morning card）from a Bible reading schedule — muted-Christian country/nature SVG art, verse excerpt, retina PNG output. Use when the user asks to make today's card, a card for a specific date, pastes a QT/讀經進度表 and asks for a card, or references daily-scripture-card. Not for general Bible Q&A.
 user-invocable: true
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 
 # 每日經文早安賀卡
 
-專案根目錄固定在（下稱 `<ROOT>`，一律用絕對路徑，不依賴目前 cwd）：
+專案根目錄固定在（下稱 `<ROOT>`，用相對路徑，不依賴目前 cwd）：
 
 ```
-E:\Cloud\NAS-000-AI\AI\Claude\daily-scripture-card
+.
 ```
 
 該目錄下已有完整資源：

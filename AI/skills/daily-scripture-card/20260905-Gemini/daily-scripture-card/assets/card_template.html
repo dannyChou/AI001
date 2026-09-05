@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>每日經文早安賀卡 - 印刷級極致清晰版</title>
+  <style>
+    @page {
+      size: 1080px 2160px;
+      margin: 0;
+    }
+    :root {
+      --paper: #FAF8F2;
+      --ink: #000000;
+      --ink-soft: #221E1B;
+      --wheat: #9E651E;
+      --barn: #7C2D12;
+      --dashed-border: rgba(46, 42, 39, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #EFE9DE;
+      width: 1080px;
+      height: 2160px;
+      padding: 20px;
+      font-family: "Noto Sans CJK TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    .bookmark {
+      width: 1040px;
+      height: 2120px;
+      background-color: var(--paper);
+      border-radius: 40px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      border: 1.5px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .border-frame {
+      border: 4px dashed var(--dashed-border);
+      border-radius: 28px;
+      padding: 24px 36px 20px 36px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .art {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .art svg {
+      width: 100%;
+      max-width: 440px;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .date {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.26em;
+      color: var(--ink-soft);
+      text-align: center;
+      margin: 4px 0 2px 0;
+    }
+
+    h1 {
+      font-family: "Noto Serif CJK TC", "Noto Serif TC", serif;
+      font-size: 54px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+
+    .subtitle {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: var(--barn);
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .verse {
+      background: rgba(158, 101, 30, 0.16);
+      border-left: 12px solid var(--wheat);
+      border-radius: 14px;
+      padding: 14px 20px;
+      margin-bottom: 12px;
+    }
+
+    .verse .txt {
+      font-family: "Noto Serif CJK TC", "Noto Serif TC", serif;
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1.45;
+      color: #000000;
+      letter-spacing: 0.03em;
+    }
+
+    .verse .ref {
+      display: block;
+      font-size: 25px;
+      font-weight: 900;
+      color: var(--barn);
+      text-align: right;
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    /* 46px Bold 700 純黑排版，確保印刷級清晰度 */
+    .body {
+      font-size: 46px;
+      font-weight: 700;
+      line-height: 1.62;
+      color: #000000;
+      margin-bottom: 14px;
+      text-align: justify;
+      letter-spacing: 0.02em;
+    }
+
+    .body strong {
+      font-weight: 900;
+      color: #000000;
+      background: rgba(158, 101, 30, 0.32);
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+
+    .quote {
+      border-left: 10px solid var(--wheat);
+      background: rgba(239, 233, 222, 0.7);
+      border-radius: 0 14px 14px 0;
+      padding: 12px 18px 12px 22px;
+      margin: 6px 0 10px 0;
+      font-family: "Noto Serif CJK TC", "Noto Serif TC", serif;
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1.45;
+      color: #1F1B18;
+      letter-spacing: 0.03em;
+    }
+
+    .footer {
+      border-top: 2.5px solid rgba(46, 42, 39, 0.3);
+      padding-top: 8px;
+      text-align: center;
+    }
+
+    .footer .en {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      color: var(--ink-soft);
+      margin-bottom: 2px;
+    }
+
+    .footer .bless {
+      font-size: 31px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: var(--barn);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bookmark">
+    <div class="border-frame">
+      
+      <div class="top-group">
+        <!-- SVG art placeholder -->
+        <div class="art">
+          <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bgSky0902" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#EAE3D6" />
+                <stop offset="60%" stop-color="#F2EDE3" />
+                <stop offset="100%" stop-color="#FAF6ED" />
+              </linearGradient>
+              <radialGradient id="sun0902" cx="35%" cy="30%" r="65%">
+                <stop offset="0%" stop-color="#FDF0B5" stop-opacity="0.95" />
+                <stop offset="55%" stop-color="#F8E3A2" stop-opacity="0.35" />
+                <stop offset="100%" stop-color="#F7F3EA" stop-opacity="0" />
+              </radialGradient>
+              <linearGradient id="beam0902" x1="15%" y1="0%" x2="85%" y2="100%">
+                <stop offset="0%" stop-color="#FFF9E6" stop-opacity="0.55" />
+                <stop offset="100%" stop-color="#FFF9E6" stop-opacity="0.0" />
+              </linearGradient>
+              <linearGradient id="hills0902" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#B6C2AF" />
+                <stop offset="100%" stop-color="#90A389" />
+              </linearGradient>
+              <linearGradient id="table0902" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#936E55" />
+                <stop offset="100%" stop-color="#724D38" />
+              </linearGradient>
+              <linearGradient id="basinWater0902" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E5F1F2" />
+                <stop offset="100%" stop-color="#BFDCDE" />
+              </linearGradient>
+            </defs>
+
+            <rect width="440" height="180" rx="12" fill="url(#bgSky0902)" />
+            <circle cx="150" cy="45" r="80" fill="url(#sun0902)" />
+
+            <path d="M-20 100 Q70 65 170 85 T370 78 Q415 88 460 102 L460 180 L-20 180 Z" fill="url(#hills0902)" opacity="0.45" />
+            <path d="M-20 115 Q90 95 220 108 T460 102 L460 180 L-20 180 Z" fill="#7A916F" opacity="0.65" />
+
+            <line x1="140" y1="0" x2="140" y2="135" stroke="#7A756B" stroke-width="1.2" opacity="0.25" />
+            <line x1="300" y1="0" x2="300" y2="135" stroke="#7A756B" stroke-width="1.2" opacity="0.25" />
+            <polygon points="140,0 210,0 340,150 190,150" fill="url(#beam0902)" />
+
+            <polygon points="0,126 440,126 440,180 0,180" fill="url(#table0902)" />
+            <line x1="0" y1="127" x2="440" y2="127" stroke="#B8957C" stroke-width="1.6" />
+
+            <ellipse cx="185" cy="158" rx="38" ry="7" fill="#4E3626" opacity="0.4" />
+            <ellipse cx="185" cy="142" rx="36" ry="12" fill="#FAF8F5" stroke="#3D3730" stroke-width="1.5" />
+            <ellipse cx="185" cy="142" rx="30" ry="8" fill="url(#basinWater0902)" stroke="#8FAFB1" stroke-width="0.8" />
+            <path d="M 151 142 Q 155 158 185 160 Q 215 158 219 142" fill="#F4EFE6" stroke="#3D3730" stroke-width="1.5" />
+            <ellipse cx="180" cy="141" rx="12" ry="3" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.9" />
+
+            <polygon points="245,130 300,125 320,145 260,152" fill="#FFFFFF" stroke="#4A443D" stroke-width="1.4" />
+            <polygon points="245,137 300,132 320,152 260,159" fill="#F4EFE6" stroke="#4A443D" stroke-width="1.4" />
+
+            <path d="M 278 125 Q 288 95 304 72" fill="none" stroke="#485D3E" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M 304 72 Q 315 60 319 54 Q 310 64 304 72 Z" fill="#637C57" stroke="#34462E" stroke-width="1.2" />
+            <path d="M 295 90 Q 310 85 317 88 Q 307 94 294 92 Z" fill="#759067" stroke="#34462E" stroke-width="1.2" />
+            <path d="M 285 105 Q 269 101 262 106 Q 272 110 285 107 Z" fill="#84A375" stroke="#34462E" stroke-width="1.2" />
+            <circle cx="272" cy="160" r="2.2" fill="#FFFFFF" opacity="0.9" />
+          </svg>
+        </div>
+
+        <div class="date">2026 / 09 / 02</div>
+        <h1>給疲憊的身體，一段安歇的界線</h1>
+        <div class="subtitle">GIVING REST TO THE WEARY BODY</div>
+
+        <div class="verse">
+          <div class="txt">「人若夢遺，他就要用水洗全身，不潔淨到晚上……女人行經，必污穢七天。」</div>
+          <span class="ref">利未記 15 : 16, 19</span>
+        </div>
+      </div>
+
+      <div class="content-group">
+        <p class="body">我們的身體不是永動的機器，它會疲累、會消耗，也會在日復一日的奔波中發出無聲的抗議。然而在講求效率的步調裡，我們往往苛責自己的停頓，甚至把生理的疲憊與軟弱視為一種負擔或不便。</p>
+        <p class="body">在聖經的<strong>利未記</strong>裡，記錄了神對人體各樣分泌與常態消耗的細膩關顧。面對身體的耗損，條例要求人「<strong>用水洗身……必不潔淨到晚上</strong>」。神設立這道看似繁瑣的界線，並非要給人定罪，而是鄭重提醒：當身體承受消耗時，神主動劃出一塊保護的空間，容許人洗去塵垢、暫時停下手邊的勞碌，安然休息直到日落。</p>
+        <p class="body">週三的清晨，在一週的中途，若你的身體正感到沉重與透支，不妨順應它的需要，不必懷抱罪惡感地給自己一段喘息時間。若你好奇這份看重人的血肉之軀、賦予人休息權利的深厚體恤，歡迎有一天翻開聖經裡的<strong>利未記</strong>。</p>
+
+        <div class="quote">
+          懂得尊重身體的極限並為它劃下安歇的界線，是生命最深層的智慧與恩典。
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="en">LEVITICUS 15 : 16 – 24</div>
+        <div class="bless">願神祝福你：得蒙體恤，安然歇息。</div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
