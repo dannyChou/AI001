@@ -1,3 +1,8 @@
+---
+name: email-reply-assistant
+description: 協助將客戶來信分類為詢價、客訴或一般問題，並撰寫專業的 Email 回覆草稿。當使用者要求「幫我回覆這封信」、「回覆客戶」、「寫回信」，或提供客戶信件並明確要求撰寫回覆時使用。
+---
+
 # Email 回覆助手
 
 ## Description
